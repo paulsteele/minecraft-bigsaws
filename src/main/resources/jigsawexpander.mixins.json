@@ -9,6 +9,7 @@
     "JigsawPlacementMixin",
     "JigsawStructureAccessor",
     "JigsawStructureMixin",
+    "LakeFeatureMixin",
     "ServerChunkCacheMixin"
   ],
   "minVersion": "0.8",
