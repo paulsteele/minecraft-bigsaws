@@ -6,13 +6,16 @@
   "mixins": [
     "ChunkGeneratorMixin",
     "ChunkStepMixin",
+    "DripstoneClusterFeatureMixin",
     "JigsawPlacementMixin",
     "JigsawStructureAccessor",
     "JigsawStructureMixin",
     "LakeFeatureMixin",
     "OreFeatureMixin",
+    "PointedDripstoneFeatureMixin",
     "ScatteredOreFeatureMixin",
-    "ServerChunkCacheMixin"
+    "ServerChunkCacheMixin",
+    "TreeFeatureMixin"
   ],
   "minVersion": "0.8",
   "injectors": {
