@@ -10,6 +10,8 @@
     "JigsawStructureAccessor",
     "JigsawStructureMixin",
     "LakeFeatureMixin",
+    "OreFeatureMixin",
+    "ScatteredOreFeatureMixin",
     "ServerChunkCacheMixin"
   ],
   "minVersion": "0.8",
