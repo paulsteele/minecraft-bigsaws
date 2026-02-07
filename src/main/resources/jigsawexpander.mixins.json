@@ -4,17 +4,12 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jigsawexpander.refmap.json",
   "mixins": [
-    "ChunkGeneratorMixin",
-    "ChunkStepMixin",
+    "CreateReferencesMixin",
     "DripstoneClusterFeatureMixin",
-    "JigsawPlacementMixin",
-    "JigsawStructureAccessor",
-    "JigsawStructureMixin",
     "LakeFeatureMixin",
     "OreFeatureMixin",
     "PointedDripstoneFeatureMixin",
     "ScatteredOreFeatureMixin",
-    "ServerChunkCacheMixin",
     "TreeFeatureMixin"
   ],
   "minVersion": "0.8",
