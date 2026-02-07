@@ -1,6 +1,6 @@
-package com.bmp.jigsaw.expander.mixins;
+package com.bmp.bigsaws.mixins;
 
-import com.bmp.jigsaw.expander.LargeStructureTracker;
+import com.bmp.bigsaws.LargeStructureTracker;
 import net.minecraft.core.SectionPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;

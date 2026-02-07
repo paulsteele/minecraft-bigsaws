@@ -1,21 +1,21 @@
-package com.bmp.jigsaw.expander.mixins;
+package com.bmp.bigsaws.mixins;
 
-import com.bmp.jigsaw.expander.LargeStructureTracker;
+import com.bmp.bigsaws.LargeStructureTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.ScatteredOreFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.PointedDripstoneFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.PointedDripstoneConfiguration;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ScatteredOreFeature.class)
-public class ScatteredOreFeatureMixin {
+@Mixin(PointedDripstoneFeature.class)
+public class PointedDripstoneFeatureMixin {
 
     @Inject(method = "place", at = @At("HEAD"), cancellable = true)
-    private void preventScatteredOreInStructures(FeaturePlaceContext<OreConfiguration> context,
-                                                  CallbackInfoReturnable<Boolean> cir) {
+    private void preventPointedDripstoneInStructures(FeaturePlaceContext<PointedDripstoneConfiguration> context,
+                                                      CallbackInfoReturnable<Boolean> cir) {
         BlockPos pos = context.origin();
         if (LargeStructureTracker.isPositionInsideAnyStructure(pos, 4)) {
             cir.setReturnValue(false);

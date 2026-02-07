@@ -1,6 +1,6 @@
-package com.bmp.jigsaw.expander.mixins;
+package com.bmp.bigsaws.mixins;
 
-import com.bmp.jigsaw.expander.LargeStructureTracker;
+import com.bmp.bigsaws.LargeStructureTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;

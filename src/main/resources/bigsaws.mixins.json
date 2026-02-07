@@ -1,8 +1,8 @@
 {
   "required": true,
-  "package": "com.bmp.jigsaw.expander.mixins",
+  "package": "com.bmp.bigsaws.mixins",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "jigsawexpander.refmap.json",
+  "refmap": "bigsaws.refmap.json",
   "mixins": [
     "CreateReferencesMixin",
     "DripstoneClusterFeatureMixin",

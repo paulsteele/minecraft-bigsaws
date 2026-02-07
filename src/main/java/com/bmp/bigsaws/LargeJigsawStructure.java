@@ -1,4 +1,4 @@
-package com.bmp.jigsaw.expander;
+package com.bmp.bigsaws;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
@@ -141,20 +141,16 @@ public class LargeJigsawStructure extends Structure {
                 registryAccess, chunkGenerator, biomeSource, randomState,
                 structureTemplateManager, seed, chunkPos, references, heightAccessor, validBiome
         );
-        if (start.isValid()) {
+        if (start.isValid())
+        {
             BoundingBox bb = start.getBoundingBox();
             LargeStructureTracker.register(chunkPos, bb, this, start);
-            JigsawMod.LOGGER.info("LargeJigsawStructure generated at chunk [{}, {}] with {} pieces, BB: [{},{} to {},{}] ({}x{} blocks)",
-                    chunkPos.x, chunkPos.z,
-                    start.getPieces().size(),
-                    bb.minX(), bb.minZ(), bb.maxX(), bb.maxZ(),
-                    bb.maxX() - bb.minX(), bb.maxZ() - bb.minZ());
         }
         return start;
     }
 
     @Override
     public StructureType<?> type() {
-        return JigsawMod.LARGE_JIGSAW.get();
+        return BigsawsMod.LARGE_JIGSAW.get();
     }
 }

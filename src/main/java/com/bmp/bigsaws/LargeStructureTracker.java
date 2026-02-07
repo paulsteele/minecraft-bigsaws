@@ -1,4 +1,4 @@
-package com.bmp.jigsaw.expander;
+package com.bmp.bigsaws;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
