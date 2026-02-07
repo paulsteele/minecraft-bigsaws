@@ -35,6 +35,5 @@ public class BigsawsMod
     public BigsawsMod(IEventBus modEventBus)
     {
         STRUCTURE_TYPES.register(modEventBus);
-        NeoForge.EVENT_BUS.register(this);
     }
 }
