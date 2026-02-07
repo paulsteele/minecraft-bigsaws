@@ -4,14 +4,14 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "jigsawexpander.refmap.json",
   "mixins": [
-    "ChunkStepMixin",
     "CreateReferencesMixin",
-    "DripstoneClusterFeatureMixin",
-    "LakeFeatureMixin",
-    "OreFeatureMixin",
-    "PointedDripstoneFeatureMixin",
-    "ScatteredOreFeatureMixin",
-    "TreeFeatureMixin"
+//    "DripstoneClusterFeatureMixin",
+    "StructureManagerMixin"
+//    "LakeFeatureMixin",
+//    "OreFeatureMixin",
+//    "PointedDripstoneFeatureMixin",
+//    "ScatteredOreFeatureMixin",
+//    "TreeFeatureMixin"
   ],
   "minVersion": "0.8",
   "injectors": {

@@ -143,7 +143,7 @@ public class LargeJigsawStructure extends Structure {
         );
         if (start.isValid()) {
             BoundingBox bb = start.getBoundingBox();
-            LargeStructureTracker.register(chunkPos, bb);
+            LargeStructureTracker.register(chunkPos, bb, this, start);
             JigsawMod.LOGGER.info("LargeJigsawStructure generated at chunk [{}, {}] with {} pieces, BB: [{},{} to {},{}] ({}x{} blocks)",
                     chunkPos.x, chunkPos.z,
                     start.getPieces().size(),
