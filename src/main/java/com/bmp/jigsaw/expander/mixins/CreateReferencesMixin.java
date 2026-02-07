@@ -1,9 +1,9 @@
 package com.bmp.jigsaw.expander.mixins;
 
+import com.bmp.jigsaw.expander.JigsawMod;
 import com.bmp.jigsaw.expander.LargeJigsawStructure;
 import com.bmp.jigsaw.expander.LargeStructureTracker;
 import net.minecraft.core.SectionPos;
-import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.WorldGenLevel;
@@ -48,18 +48,16 @@ public class CreateReferencesMixin {
                 continue;
             }
 
-            // Fetch the structure start chunk and add references for overlapping pieces
-            try {
-                ChunkAccess startChunk = level.getChunk(startChunkX, startChunkZ);
-                for (StructureStart structureStart : startChunk.getAllStarts().values()) {
-                    if (structureStart.isValid()
-                            && structureStart.getStructure() instanceof LargeJigsawStructure
-                            && structureStart.getBoundingBox().intersects(minBlockX, minBlockZ, minBlockX + 15, minBlockZ + 15)) {
-                        structureManager.addReferenceForStructure(sectionPos, structureStart.getStructure(), startChunkLong, chunk);
-                    }
+            // Fetch the structure start chunk (available because ChunkStepMixin expands
+            // the STRUCTURE_STARTS dependency radius to 32, making these chunks accessible
+            // in the WorldGenRegion)
+            ChunkAccess startChunk = level.getChunk(startChunkX, startChunkZ);
+            for (StructureStart structureStart : startChunk.getAllStarts().values()) {
+                if (structureStart.isValid()
+                        && structureStart.getStructure() instanceof LargeJigsawStructure
+                        && structureStart.getBoundingBox().intersects(minBlockX, minBlockZ, minBlockX + 15, minBlockZ + 15)) {
+                    structureManager.addReferenceForStructure(sectionPos, structureStart.getStructure(), startChunkLong, chunk);
                 }
-            } catch (Exception e) {
-                // If the chunk can't be accessed (e.g., outside generation range), skip silently
             }
         }
     }

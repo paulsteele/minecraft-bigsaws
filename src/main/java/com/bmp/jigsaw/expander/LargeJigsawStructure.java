@@ -16,6 +16,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -105,6 +106,9 @@ public class LargeJigsawStructure extends Structure {
         ChunkPos chunkPos = context.chunkPos();
         int y = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
         BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), y, chunkPos.getMinBlockZ());
+        // Always use MAX_TOTAL_STRUCTURE_RANGE for the placement AABB, regardless
+        // of the JSON value. The JSON max_distance_from_center is kept for CODEC
+        // round-tripping, but piece placement always gets the full 512-block range.
         return JigsawPlacement.addPieces(
                 context,
                 this.startPool,
@@ -113,7 +117,7 @@ public class LargeJigsawStructure extends Structure {
                 blockPos,
                 this.useExpansionHack,
                 this.projectStartToHeightmap,
-                this.maxDistanceFromCenter,
+                MAX_TOTAL_STRUCTURE_RANGE,
                 PoolAliasLookup.create(this.poolAliases, blockPos, context.seed()),
                 this.dimensionPadding,
                 this.liquidSettings
@@ -138,7 +142,13 @@ public class LargeJigsawStructure extends Structure {
                 structureTemplateManager, seed, chunkPos, references, heightAccessor, validBiome
         );
         if (start.isValid()) {
-            LargeStructureTracker.register(chunkPos, start.getBoundingBox());
+            BoundingBox bb = start.getBoundingBox();
+            LargeStructureTracker.register(chunkPos, bb);
+            JigsawMod.LOGGER.info("LargeJigsawStructure generated at chunk [{}, {}] with {} pieces, BB: [{},{} to {},{}] ({}x{} blocks)",
+                    chunkPos.x, chunkPos.z,
+                    start.getPieces().size(),
+                    bb.minX(), bb.minZ(), bb.maxX(), bb.maxZ(),
+                    bb.maxX() - bb.minX(), bb.maxZ() - bb.minZ());
         }
         return start;
     }
