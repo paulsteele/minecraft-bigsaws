@@ -1,5 +1,6 @@
 package com.bmp.jigsaw.expander;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
@@ -25,6 +26,19 @@ public class LargeStructureTracker {
 
     public static Collection<TrackedStructure> getAll() {
         return STRUCTURES.values();
+    }
+
+    public static boolean isPositionInsideAnyStructure(BlockPos pos, int margin) {
+        int x = pos.getX(), y = pos.getY(), z = pos.getZ();
+        for (TrackedStructure tracked : STRUCTURES.values()) {
+            BoundingBox bb = tracked.boundingBox();
+            if (x >= bb.minX() - margin && x <= bb.maxX() + margin
+             && z >= bb.minZ() - margin && z <= bb.maxZ() + margin
+             && y >= bb.minY() - margin && y <= bb.maxY() + margin) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void clear() {

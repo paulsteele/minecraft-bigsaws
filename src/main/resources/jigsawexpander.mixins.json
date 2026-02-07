@@ -5,13 +5,13 @@
   "refmap": "jigsawexpander.refmap.json",
   "mixins": [
     "CreateReferencesMixin",
-//    "DripstoneClusterFeatureMixin",
-    "StructureManagerMixin"
-//    "LakeFeatureMixin",
-//    "OreFeatureMixin",
-//    "PointedDripstoneFeatureMixin",
-//    "ScatteredOreFeatureMixin",
-//    "TreeFeatureMixin"
+    "DripstoneClusterFeatureMixin",
+    "LakeFeatureMixin",
+    "OreFeatureMixin",
+    "PointedDripstoneFeatureMixin",
+    "ScatteredOreFeatureMixin",
+    "StructureManagerMixin",
+    "TreeFeatureMixin"
   ],
   "minVersion": "0.8",
   "injectors": {
